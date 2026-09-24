@@ -6,9 +6,9 @@
     --color-bg: #050505;
     --color-text: #ffffff;
 
-    --color-blue: #00c3ff;
-    --color-pink: #ff0099;
-    --color-purple: #8000ff;
+    --color-blue: #7ccfe5;
+    --color-pink: #e6a1c8;
+    --color-purple: #b39ad9;
 
     --color-border: rgba(255, 255, 255, 0.15);
     --color-border-strong: rgba(255, 255, 255, 0.5);
@@ -30,48 +30,78 @@
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 
+
 body {
     min-height: 100vh;
-    color: var(--color-text);
-    font-family: Arial, Helvetica, sans-serif;
+
+    color: #050505;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
     background:
         radial-gradient(
-            circle at 15% 20%,
-            rgba(0, 195, 255, 0.65),
-            transparent 32%
+            ellipse 100% 55% at 15% 0%,
+            rgba(105, 205, 235, 0.55),
+            transparent 72%
         ),
+
         radial-gradient(
-            circle at 85% 15%,
-            rgba(255, 0, 153, 0.55),
-            transparent 32%
+            ellipse 100% 60% at 90% 15%,
+            rgba(245, 155, 205, 0.70),
+            transparent 72%
         ),
+
         radial-gradient(
-            circle at 50% 70%,
-            rgba(128, 0, 255, 0.4),
-            transparent 42%
+            ellipse 100% 65% at 15% 55%,
+            rgba(230, 155, 210, 0.72),
+            transparent 72%
         ),
+
         radial-gradient(
-            circle at 90% 85%,
-            rgba(0, 195, 255, 0.25),
-            transparent 30%
+            ellipse 100% 60% at 85% 70%,
+            rgba(250, 145, 200, 0.78),
+            transparent 72%
         ),
-        var(--color-bg);
+
+        radial-gradient(
+            ellipse 100% 55% at 35% 100%,
+            rgba(120, 195, 235, 0.48),
+            transparent 72%
+        ),
+
+        linear-gradient(
+            180deg,
+            #a9dce9 0%,
+            #c9d7e8 20%,
+            #dfc4df 42%,
+            #e8b8d4 62%,
+            #edb0d0 78%,
+            #c5d2e8 100%
+        );
+
+    background-attachment: fixed;
 }
+
 
 img {
     max-width: 100%;
     display: block;
 }
 
+
 a {
     color: inherit;
     text-decoration: none;
 }
+
 
 ul {
     list-style: none;
@@ -84,11 +114,26 @@ ul {
 
 header {
     position: absolute;
+
     top: 0;
     left: 0;
+
     width: 100%;
-    z-index: 10;
+
+    z-index: 100;
 }
+
+
+header.scrolled {
+    position: fixed;
+
+    background: rgba(5, 5, 5, 0.72);
+
+    backdrop-filter: blur(14px);
+
+    border-bottom: 1px solid var(--color-border);
+}
+
 
 nav {
     width: min(
@@ -97,40 +142,81 @@ nav {
     );
 
     margin: 0 auto;
-    padding: 25px 0;
+
+    padding: 20px 0;
 
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 }
 
-nav > a {
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: 0.15rem;
+
+/* =========================================
+   NAV LOGO
+========================================= */
+
+.nav-logo {
+    display: flex;
+
+    align-items: center;
+
+    width: 90px;
 }
+
+
+.nav-logo img {
+    width: 100%;
+
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* =========================================
+   NAV LINKS
+========================================= */
 
 nav ul {
     display: flex;
+
+    align-items: center;
+
     gap: 30px;
 }
 
+
 nav ul a {
     font-size: 0.9rem;
-    letter-spacing: 0.08rem;
-    opacity: 0.8;
 
-    transition: opacity 0.3s ease;
+    letter-spacing: 0.08rem;
+
+    opacity: 0.75;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
 }
+
 
 nav ul a:hover {
     opacity: 1;
+
+    transform: translateY(-2px);
 }
+
+
+/* =========================================
+   MOBILE MENU BUTTON
+========================================= */
 
 #menu-toggle {
     display: none;
 
     background: transparent;
+
     border: 1px solid rgba(255, 255, 255, 0.5);
 
     color: var(--color-text);
@@ -138,11 +224,14 @@ nav ul a:hover {
     padding: 10px 16px;
 
     font-size: 0.75rem;
+
     text-transform: uppercase;
+
     letter-spacing: 0.1rem;
 
     cursor: pointer;
 }
+
 
 /* =========================================
    HERO
@@ -157,57 +246,153 @@ nav ul a:hover {
     );
 
     margin: 0 auto;
+
     padding-top: 120px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 60px;
 }
 
+
 #inicio > div:first-child {
     flex: 1;
 }
+
 
 #inicio > div:last-child {
     flex: 1;
 
     display: flex;
+
     justify-content: center;
 }
 
+
+/* =========================================
+   HERO SMALL TITLE
+========================================= */
+
 #inicio > div:first-child > p:first-child {
     font-size: 0.85rem;
+
     letter-spacing: 0.25rem;
+
     text-transform: uppercase;
 
-    opacity: 0.75;
-
-    margin-bottom: 20px;
-}
-
-#inicio h1 {
-    font-size: clamp(4rem, 9vw, 8rem);
-
-    line-height: 0.9;
-
-    letter-spacing: -0.3rem;
+    opacity: 0.65;
 
     margin-bottom: 25px;
 }
 
-#inicio > div:first-child > p:nth-of-type(2) {
-    font-size: 1rem;
+
+/* =========================================
+   HERO LOGO
+========================================= */
+
+.hero-logo {
+    width: min(480px, 100%);
+
+    margin-bottom: 25px;
+}
+
+
+.hero-logo img {
+    width: 100%;
+
+    max-height: 190px;
+
+    object-fit: contain;
+
+    object-position: left center;
+}
+
+
+/* =========================================
+   HERO GENRES
+========================================= */
+
+.hero-genres {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 0.85rem;
+
+    font-weight: 500;
+
+    line-height: 1.8;
 
     letter-spacing: 0.08rem;
 
-    opacity: 0.8;
+    text-transform: uppercase;
+
+    opacity: 0.82;
+
+    max-width: 620px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   HERO SOCIALS
+========================================= */
+
+.hero-socials {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
 
     margin-bottom: 35px;
 }
 
-#inicio > div:first-child > div {
+
+.hero-socials a {
+    padding: 8px 13px;
+
+    border: 1px solid rgba(5, 5, 5, 0.25);
+
+    border-radius: 30px;
+
+    font-size: 0.7rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08rem;
+
+    opacity: 0.7;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.hero-socials a:hover {
+    background: #050505;
+
+    color: #ffffff;
+
+    opacity: 1;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   HERO BUTTONS
+========================================= */
+
+.hero-buttons {
     display: flex;
 
     gap: 15px;
@@ -215,10 +400,11 @@ nav ul a:hover {
     flex-wrap: wrap;
 }
 
-#inicio > div:first-child > div a {
+
+.hero-buttons a {
     padding: 14px 26px;
 
-    border: 1px solid rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(5, 5, 5, 0.65);
 
     text-transform: uppercase;
 
@@ -232,13 +418,19 @@ nav ul a:hover {
         transform 0.3s ease;
 }
 
-#inicio > div:first-child > div a:hover {
-    background: #ffffff;
 
-    color: var(--color-bg);
+.hero-buttons a:hover {
+    background: #050505;
+
+    color: #ffffff;
 
     transform: translateY(-3px);
 }
+
+
+/* =========================================
+   HERO IMAGE
+========================================= */
 
 #inicio img {
     width: min(430px, 100%);
@@ -247,7 +439,7 @@ nav ul a:hover {
 
     object-fit: cover;
 
-    border-radius: 2px;
+    border-radius: 3px;
 }
 
 
@@ -274,6 +466,7 @@ nav ul a:hover {
     gap: 80px;
 }
 
+
 #about > div:first-child img {
     width: 100%;
 
@@ -281,6 +474,7 @@ nav ul a:hover {
 
     object-fit: cover;
 }
+
 
 #about > div:last-child > p:first-child {
     font-size: 0.8rem;
@@ -292,6 +486,7 @@ nav ul a:hover {
     margin-bottom: 15px;
 }
 
+
 #about h2 {
     font-size: clamp(3rem, 6vw, 6rem);
 
@@ -302,6 +497,11 @@ nav ul a:hover {
     margin-bottom: 35px;
 }
 
+
+/* =========================================
+   ABOUT TEXT - UPPERCASE
+========================================= */
+
 #about > div:last-child > p:not(:first-child) {
     font-size: 1.05rem;
 
@@ -310,100 +510,8 @@ nav ul a:hover {
     opacity: 0.8;
 
     margin-bottom: 20px;
-}
-
-
-/* =========================================
-   THE SOUND / GENRES
-========================================= */
-
-#genres {
-    width: min(
-        var(--container-width),
-        var(--container-width-mobile)
-    );
-
-    margin: 0 auto;
-
-    padding: var(--section-padding) 0;
-}
-
-#genres > div:first-child {
-    max-width: 650px;
-
-    margin-bottom: 60px;
-}
-
-#genres > div:first-child > p:first-child {
-    font-size: 0.8rem;
-
-    letter-spacing: 0.2rem;
-
-    opacity: 0.6;
-
-    margin-bottom: 15px;
-}
-
-#genres h2 {
-    font-size: clamp(3rem, 6vw, 6rem);
 
     text-transform: uppercase;
-
-    line-height: 0.95;
-
-    margin-bottom: 25px;
-}
-
-#genres > div:first-child > p:last-child {
-    font-size: 1.05rem;
-
-    line-height: 1.8;
-
-    opacity: 0.8;
-}
-
-#genres > div:last-child {
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 1px;
-
-    background: var(--color-border);
-}
-
-#genres article {
-    padding: 45px;
-
-    background: rgba(5, 5, 5, 0.78);
-
-    min-height: 240px;
-
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease;
-}
-
-#genres article h3 {
-    font-size: 1.6rem;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.05rem;
-
-    margin-bottom: 20px;
-}
-
-#genres article p {
-    line-height: 1.7;
-
-    opacity: 0.7;
-}
-
-#genres article:hover {
-    transform: translateY(-6px);
-
-    background: rgba(255, 255, 255, 0.08);
 }
 
 
@@ -422,11 +530,13 @@ nav ul a:hover {
     padding: var(--section-padding) 0;
 }
 
+
 #music > div:first-child {
     max-width: 650px;
 
     margin-bottom: 60px;
 }
+
 
 #music > div:first-child > p:first-child {
     font-size: 0.8rem;
@@ -438,6 +548,7 @@ nav ul a:hover {
     margin-bottom: 15px;
 }
 
+
 #music h2 {
     font-size: clamp(3rem, 6vw, 6rem);
 
@@ -448,6 +559,7 @@ nav ul a:hover {
     margin-bottom: 25px;
 }
 
+
 #music > div:first-child > p:last-child {
     font-size: 1.05rem;
 
@@ -455,6 +567,11 @@ nav ul a:hover {
 
     opacity: 0.8;
 }
+
+
+/* =========================================
+   RELEASE GRID
+========================================= */
 
 #music > div:last-child {
     display: grid;
@@ -464,9 +581,11 @@ nav ul a:hover {
     gap: 25px;
 }
 
+
 #music article {
     overflow: hidden;
 }
+
 
 #music article img {
     width: 100%;
@@ -480,6 +599,7 @@ nav ul a:hover {
         filter 0.4s ease;
 }
 
+
 #music article h3 {
     margin-top: 18px;
 
@@ -490,6 +610,7 @@ nav ul a:hover {
     letter-spacing: 0.05rem;
 }
 
+
 #music article p {
     margin-top: 8px;
 
@@ -497,6 +618,28 @@ nav ul a:hover {
 
     opacity: 0.6;
 }
+
+
+/* =========================================
+   RELEASE HIGHLIGHT
+========================================= */
+
+#music article .release-highlight {
+    min-height: 42px;
+
+    margin-top: 10px;
+
+    font-size: 0.75rem;
+
+    line-height: 1.6;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.05rem;
+
+    opacity: 0.72;
+}
+
 
 #music article a {
     display: inline-block;
@@ -509,12 +652,13 @@ nav ul a:hover {
 
     letter-spacing: 0.12rem;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    border-bottom: 1px solid rgba(5, 5, 5, 0.6);
 
     transition:
         opacity 0.3s ease,
         transform 0.3s ease;
 }
+
 
 #music article:hover img {
     transform: scale(1.05);
@@ -522,150 +666,11 @@ nav ul a:hover {
     filter: brightness(0.75);
 }
 
+
 #music article a:hover {
     opacity: 0.7;
 
     transform: translateX(4px);
-}
-
-
-/* =========================================
-   GALLERY
-========================================= */
-
-#gallery {
-    width: min(
-        var(--container-width),
-        var(--container-width-mobile)
-    );
-
-    margin: 0 auto;
-
-    padding: var(--section-padding) 0;
-}
-
-#gallery > div:first-child {
-    max-width: 650px;
-
-    margin-bottom: 60px;
-}
-
-#gallery > div:first-child > p:first-child {
-    font-size: 0.8rem;
-
-    letter-spacing: 0.2rem;
-
-    opacity: 0.6;
-
-    margin-bottom: 15px;
-}
-
-#gallery h2 {
-    font-size: clamp(3rem, 6vw, 6rem);
-
-    text-transform: uppercase;
-
-    line-height: 0.95;
-
-    margin-bottom: 25px;
-}
-
-#gallery > div:first-child > p:last-child {
-    font-size: 1.05rem;
-
-    line-height: 1.8;
-
-    opacity: 0.8;
-}
-
-#gallery > div:nth-child(2) {
-    display: grid;
-
-    grid-template-columns: repeat(12, 1fr);
-
-    gap: 20px;
-}
-
-#gallery figure {
-    position: relative;
-
-    overflow: hidden;
-}
-
-#gallery figure:nth-child(1) {
-    grid-column: span 7;
-}
-
-#gallery figure:nth-child(2) {
-    grid-column: span 5;
-}
-
-#gallery figure:nth-child(3) {
-    grid-column: span 5;
-}
-
-#gallery figure:nth-child(4) {
-    grid-column: span 7;
-}
-
-#gallery figure img {
-    width: 100%;
-
-    height: 100%;
-
-    min-height: 320px;
-
-    object-fit: cover;
-
-    transition:
-        transform 0.5s ease,
-        filter 0.5s ease;
-}
-
-#gallery figcaption {
-    position: absolute;
-
-    left: 20px;
-
-    bottom: 20px;
-
-    font-size: 0.8rem;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.12rem;
-
-    opacity: 0;
-
-    transform: translateY(10px);
-
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
-}
-
-#gallery figure:hover img {
-    transform: scale(1.04);
-
-    filter: brightness(0.6);
-}
-
-#gallery figure:hover figcaption {
-    opacity: 1;
-
-    transform: translateY(0);
-}
-
-#gallery > div:last-child {
-    margin-top: 20px;
-}
-
-#gallery video {
-    width: 100%;
-
-    max-height: 650px;
-
-    display: block;
 }
 
 
@@ -684,11 +689,13 @@ nav ul a:hover {
     padding: var(--section-padding) 0;
 }
 
+
 #experience > div:first-child {
     max-width: 650px;
 
     margin-bottom: 70px;
 }
+
 
 #experience > div:first-child > p:first-child {
     font-size: 0.8rem;
@@ -700,6 +707,7 @@ nav ul a:hover {
     margin-bottom: 15px;
 }
 
+
 #experience h2 {
     font-size: clamp(3rem, 6vw, 6rem);
 
@@ -710,6 +718,7 @@ nav ul a:hover {
     margin-bottom: 25px;
 }
 
+
 #experience > div:first-child > p:last-child {
     font-size: 1.05rem;
 
@@ -718,9 +727,11 @@ nav ul a:hover {
     opacity: 0.8;
 }
 
+
 #experience > div:nth-child(2) {
     border-top: 1px solid var(--color-border);
 }
+
 
 #experience > div:nth-child(2) article {
     display: grid;
@@ -738,11 +749,13 @@ nav ul a:hover {
         background 0.3s ease;
 }
 
+
 #experience > div:nth-child(2) article:hover {
     padding-left: 20px;
 
     background: rgba(255, 255, 255, 0.03);
 }
+
 
 #experience > div:nth-child(2) article > p:first-child {
     font-size: 0.85rem;
@@ -752,6 +765,7 @@ nav ul a:hover {
     opacity: 0.6;
 }
 
+
 #experience article h3 {
     font-size: 1.5rem;
 
@@ -759,6 +773,7 @@ nav ul a:hover {
 
     margin-bottom: 12px;
 }
+
 
 #experience article p:last-child {
     max-width: 650px;
@@ -768,9 +783,15 @@ nav ul a:hover {
     opacity: 0.7;
 }
 
+
+/* =========================================
+   COLLABORATIONS
+========================================= */
+
 #experience > div:last-child {
     margin-top: 100px;
 }
+
 
 #experience > div:last-child > h3 {
     font-size: 2rem;
@@ -779,6 +800,7 @@ nav ul a:hover {
 
     margin-bottom: 15px;
 }
+
 
 #experience > div:last-child > p {
     max-width: 650px;
@@ -790,13 +812,15 @@ nav ul a:hover {
     margin-bottom: 45px;
 }
 
+
 #experience > div:last-child > div {
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 
     gap: 20px;
 }
+
 
 #experience > div:last-child img {
     width: 100%;
@@ -816,6 +840,7 @@ nav ul a:hover {
         transform 0.3s ease,
         border-color 0.3s ease;
 }
+
 
 #experience > div:last-child img:hover {
     opacity: 1;
@@ -849,11 +874,13 @@ nav ul a:hover {
     border-top: 1px solid var(--color-border);
 }
 
+
 #contact > div:first-child {
     grid-column: 1 / -1;
 
     max-width: 700px;
 }
+
 
 #contact > div:first-child > p:first-child {
     font-size: 0.8rem;
@@ -865,6 +892,7 @@ nav ul a:hover {
     margin-bottom: 15px;
 }
 
+
 #contact h2 {
     font-size: clamp(3rem, 6vw, 6rem);
 
@@ -875,6 +903,7 @@ nav ul a:hover {
     margin-bottom: 25px;
 }
 
+
 #contact > div:first-child > p:last-child {
     font-size: 1.05rem;
 
@@ -883,12 +912,13 @@ nav ul a:hover {
     opacity: 0.8;
 }
 
+
 #contact > div:nth-child(2) a {
     display: inline-block;
 
     font-size: clamp(1.2rem, 2vw, 1.8rem);
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(5, 5, 5, 0.5);
 
     padding-bottom: 8px;
 
@@ -897,15 +927,18 @@ nav ul a:hover {
         transform 0.3s ease;
 }
 
+
 #contact > div:nth-child(2) a:hover {
     opacity: 0.6;
 
     transform: translateX(5px);
 }
 
+
 #contact > div:last-child {
     justify-self: end;
 }
+
 
 #contact > div:last-child h3 {
     font-size: 1rem;
@@ -917,6 +950,7 @@ nav ul a:hover {
     margin-bottom: 20px;
 }
 
+
 #contact > div:last-child ul {
     display: flex;
 
@@ -924,6 +958,7 @@ nav ul a:hover {
 
     gap: 12px;
 }
+
 
 #contact > div:last-child ul a {
     opacity: 0.7;
@@ -933,10 +968,132 @@ nav ul a:hover {
         transform 0.3s ease;
 }
 
+
 #contact > div:last-child ul a:hover {
     opacity: 1;
 
     transform: translateX(5px);
+}
+
+
+/* =========================================
+   GALLERY
+========================================= */
+
+#gallery {
+    width: min(
+        var(--container-width),
+        var(--container-width-mobile)
+    );
+
+    margin: 0 auto;
+
+    padding: var(--section-padding) 0;
+}
+
+
+#gallery > div:first-child {
+    max-width: 650px;
+
+    margin-bottom: 60px;
+}
+
+
+#gallery > div:first-child > p:first-child {
+    font-size: 0.8rem;
+
+    letter-spacing: 0.2rem;
+
+    opacity: 0.6;
+
+    margin-bottom: 15px;
+}
+
+
+#gallery h2 {
+    font-size: clamp(3rem, 6vw, 6rem);
+
+    text-transform: uppercase;
+
+    line-height: 0.95;
+
+    margin-bottom: 25px;
+}
+
+
+#gallery > div:first-child > p:last-child {
+    font-size: 1.05rem;
+
+    line-height: 1.8;
+
+    opacity: 0.8;
+}
+
+
+/* =========================================
+   GALLERY GRID
+========================================= */
+
+#gallery > div:nth-child(2) {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 45px 25px;
+}
+
+
+#gallery figure {
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+
+#gallery figure img {
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+}
+
+
+#gallery figure:hover img {
+    transform: scale(1.03);
+
+    filter: brightness(0.82);
+}
+
+
+/* =========================================
+   GALLERY TEXT UNDER IMAGE
+========================================= */
+
+#gallery figcaption {
+    position: static;
+
+    padding-top: 15px;
+
+    min-height: 55px;
+
+    font-size: 0.75rem;
+
+    line-height: 1.6;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08rem;
+
+    opacity: 0.7;
 }
 
 
@@ -967,8 +1124,227 @@ footer {
     opacity: 0.6;
 }
 
+
 footer p {
     margin-bottom: 5px;
+}
+
+
+/* =========================================
+   SCROLL ANIMATIONS
+========================================= */
+
+.scroll-reveal {
+    opacity: 0;
+
+    transform: translateY(40px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+
+.scroll-reveal.visible {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   BACK TO TOP
+========================================= */
+
+#back-to-top {
+    position: fixed;
+
+    right: 30px;
+
+    bottom: 30px;
+
+    width: 50px;
+
+    height: 50px;
+
+    border: 1px solid rgba(5, 5, 5, 0.45);
+
+    background: rgba(255, 255, 255, 0.25);
+
+    color: #050505;
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(15px);
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease,
+        transform 0.3s ease,
+        background 0.3s ease;
+
+    z-index: 200;
+}
+
+
+#back-to-top.visible {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+
+#back-to-top:hover {
+    background: rgba(255, 255, 255, 0.6);
+
+    transform: translateY(-4px);
+}
+
+
+/* =========================================
+   LIGHTBOX
+========================================= */
+
+#lightbox {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px;
+
+    background: rgba(0, 0, 0, 0.9);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+
+    z-index: 300;
+}
+
+
+#lightbox.visible {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+#lightbox-image {
+    max-width: 90%;
+
+    max-height: 85vh;
+
+    object-fit: contain;
+
+    transform: scale(0.9);
+
+    transition: transform 0.3s ease;
+}
+
+
+#lightbox.visible #lightbox-image {
+    transform: scale(1);
+}
+
+
+#lightbox-close {
+    position: absolute;
+
+    top: 25px;
+
+    right: 30px;
+
+    background: transparent;
+
+    border: none;
+
+    color: #ffffff;
+
+    font-size: 2.5rem;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    opacity: 0.8;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+#lightbox-close:hover {
+    opacity: 1;
+
+    transform: rotate(90deg);
+}
+
+
+/* =========================================
+   BOOKING NOTIFICATION
+========================================= */
+
+.booking-notification {
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 30px;
+
+    transform: translate(-50%, 20px);
+
+    padding: 14px 24px;
+
+    background: rgba(5, 5, 5, 0.9);
+
+    border: 1px solid var(--color-border-strong);
+
+    color: #ffffff;
+
+    font-size: 0.8rem;
+
+    letter-spacing: 0.08rem;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+
+    z-index: 400;
+}
+
+
+.booking-notification.visible {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translate(-50%, 0);
 }
 
 
@@ -982,33 +1358,46 @@ footer p {
         width: 90%;
     }
 
+
     nav ul {
         gap: 18px;
     }
+
 
     nav ul a {
         font-size: 0.8rem;
     }
 
+
     #inicio {
         gap: 40px;
     }
 
-    #inicio h1 {
-        font-size: clamp(3.5rem, 9vw, 6rem);
+
+    .hero-logo {
+        width: min(380px, 100%);
     }
+
 
     #about {
         gap: 50px;
     }
 
+
     #music > div:last-child {
         grid-template-columns: repeat(2, 1fr);
     }
 
+
     #experience > div:last-child > div {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+
+    #gallery > div:nth-child(2) {
         grid-template-columns: repeat(2, 1fr);
     }
+
 }
 
 
@@ -1022,41 +1411,78 @@ footer p {
         position: relative;
     }
 
-    #menu-toggle {
-    display: block;
-}
+
     nav {
         width: 90%;
 
         padding: 20px 0;
 
-        flex-direction: column;
+        flex-direction: row;
 
-        align-items: flex-start;
+        align-items: center;
 
         gap: 20px;
     }
 
-    nav ul {
-        width: 100%;
 
-        display: grid;
+    .nav-logo {
+        width: 75px;
+    }
+
+
+    #menu-toggle {
+        display: block;
+
+        margin-left: auto;
+    }
+
+
+    nav ul {
+        position: absolute;
+
+        top: 80px;
+
+        left: 5%;
+
+        width: 90%;
+
+        display: none;
 
         grid-template-columns: repeat(2, 1fr);
 
-        gap: 15px;
+        gap: 12px;
+
+        padding: 20px;
+
+        background: rgba(5, 5, 5, 0.9);
+
+        backdrop-filter: blur(14px);
+
+        border: 1px solid var(--color-border);
+
+        z-index: 150;
     }
+
 
     nav ul.menu-abierto {
-    display: none;
-}
-
-    nav ul a {
-        font-size: 0.75rem;
+        display: grid;
     }
 
 
-    /* HERO */
+    nav ul a {
+        display: block;
+
+        padding: 10px;
+
+        font-size: 0.75rem;
+
+        color: #ffffff;
+    }
+
+
+    /* =====================================
+       HERO MOBILE
+    ====================================== */
 
     #inicio {
         width: 90%;
@@ -1072,13 +1498,32 @@ footer p {
         gap: 50px;
     }
 
+
     #inicio > div {
         width: 100%;
     }
 
-    #inicio h1 {
-        font-size: clamp(3.5rem, 17vw, 6rem);
+
+    .hero-logo {
+        width: 100%;
+
+        max-width: 360px;
     }
+
+
+    .hero-logo img {
+        max-height: 150px;
+    }
+
+
+    .hero-genres {
+        font-size: 0.62rem;
+
+        line-height: 1.8;
+
+        letter-spacing: 0.04rem;
+    }
+
 
     #inicio img {
         width: 100%;
@@ -1087,7 +1532,21 @@ footer p {
     }
 
 
-    /* ABOUT */
+    .hero-socials {
+        gap: 8px;
+    }
+
+
+    .hero-socials a {
+        font-size: 0.65rem;
+
+        padding: 7px 10px;
+    }
+
+
+    /* =====================================
+       ABOUT MOBILE
+    ====================================== */
 
     #about {
         width: 90%;
@@ -1099,70 +1558,46 @@ footer p {
         padding: 90px 0;
     }
 
+
     #about > div:first-child img {
         height: 450px;
     }
 
 
-    /* GENRES */
+    #about > div:last-child > p:not(:first-child) {
+        font-size: 0.9rem;
 
-    #genres {
-        padding: 90px 0;
-    }
-
-    #genres > div:last-child {
-        grid-template-columns: 1fr;
-    }
-
-    #genres article {
-        min-height: auto;
-
-        padding: 35px;
+        line-height: 1.75;
     }
 
 
-    /* MUSIC */
+    /* =====================================
+       MUSIC MOBILE
+    ====================================== */
 
     #music {
         padding: 90px 0;
     }
 
+
     #music > div:last-child {
         grid-template-columns: 1fr;
     }
+
 
     #music article img {
         aspect-ratio: 1 / 1;
     }
 
 
-    /* GALLERY */
-
-    #gallery {
-        padding: 90px 0;
-    }
-
-    #gallery > div:nth-child(2) {
-        grid-template-columns: 1fr;
-    }
-
-    #gallery figure:nth-child(1),
-    #gallery figure:nth-child(2),
-    #gallery figure:nth-child(3),
-    #gallery figure:nth-child(4) {
-        grid-column: span 1;
-    }
-
-    #gallery figure img {
-        min-height: 300px;
-    }
-
-
-    /* EXPERIENCE */
+    /* =====================================
+       EXPERIENCE MOBILE
+    ====================================== */
 
     #experience {
         padding: 90px 0;
     }
+
 
     #experience > div:nth-child(2) article {
         grid-template-columns: 1fr;
@@ -1170,16 +1605,20 @@ footer p {
         gap: 15px;
     }
 
+
     #experience > div:last-child {
         margin-top: 70px;
     }
+
 
     #experience > div:last-child > div {
         grid-template-columns: 1fr 1fr;
     }
 
 
-    /* CONTACT */
+    /* =====================================
+       CONTACT MOBILE
+    ====================================== */
 
     #contact {
         padding: 90px 0;
@@ -1189,16 +1628,48 @@ footer p {
         gap: 50px;
     }
 
+
     #contact > div:first-child {
         grid-column: auto;
     }
+
 
     #contact > div:last-child {
         justify-self: start;
     }
 
 
-    /* FOOTER */
+    /* =====================================
+       GALLERY MOBILE
+    ====================================== */
+
+    #gallery {
+        padding: 90px 0;
+    }
+
+
+    #gallery > div:nth-child(2) {
+        grid-template-columns: 1fr;
+    }
+
+
+    #gallery figure img {
+        aspect-ratio: 1 / 1;
+    }
+
+
+    #gallery figcaption {
+        min-height: auto;
+
+        padding-top: 12px;
+
+        font-size: 0.7rem;
+    }
+
+
+    /* =====================================
+       FOOTER MOBILE
+    ====================================== */
 
     footer {
         flex-direction: column;
@@ -1207,4 +1678,5 @@ footer p {
 
         gap: 25px;
     }
+
 }
